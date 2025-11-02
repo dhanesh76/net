@@ -29,7 +29,7 @@ $ns connect $tcp $sink
 
 # Application
 set ftp [new Application/FTP]
-$ftp attach-agent $tcp   ;# ❗ Corrected (was 'connect' before)
+$ftp attach-agent $tcp   
 
 # Start/Stop
 $ns at 0.5 "$ftp start"
