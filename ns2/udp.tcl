@@ -21,7 +21,7 @@ $ns duplex-link $n1 $n2 1Mb 1ms DropTail
 set udp [new Agent/UDP]
 $ns attach-agent $n0 $udp
 
-set null [new Agent/Null]   ;# ❗ renamed 'n' → 'null' (avoid confusion)
+set null [new Agent/Null]   
 $ns attach-agent $n2 $null
 
 # Connect sender to receiver
@@ -50,6 +50,10 @@ proc finish {} {
 
 # Run simulation
 $ns run
+
+
+
+
 # Run Commands
 # ns udp.tcl
 # nam out.nam
