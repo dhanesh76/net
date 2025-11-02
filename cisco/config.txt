@@ -1,3 +1,5 @@
+DHCP
+
 Router> enable
 Router# configure terminal
 
@@ -16,6 +18,34 @@ Router(dhcp-config)# network 192.168.18.0 255.255.255.0
 Router(dhcp-config)# default-router 192.168.18.1
 Router(dhcp-config)# dns-server 8.8.8.8
 Router(dhcp-config)# exit
+
+Router(config)# exit
+Router#
+
+
+LAN 
+
+          [ Router ]
+           /       \
+      [S1]           [S2]
+     /   \           /   \
+ [PC1] [PC2]     [PC3] [PC4]
+
+
+Router> enable
+Router# configure terminal
+
+! Left LAN (S1 side)
+Router(config)# interface fastEthernet 0/0
+Router(config-if)# ip address 192.168.10.1 255.255.255.0
+Router(config-if)# no shutdown
+Router(config-if)# exit
+
+! Right LAN (S2 side)
+Router(config)# interface fastEthernet 0/1
+Router(config-if)# ip address 192.168.20.1 255.255.255.0
+Router(config-if)# no shutdown
+Router(config-if)# exit
 
 Router(config)# exit
 Router#
