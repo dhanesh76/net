@@ -1,0 +1,22 @@
+Router> enable
+Router# configure terminal
+
+! Configure router interface
+Router(config)# interface fastEthernet 0/0
+Router(config-if)# ip address 192.168.18.1 255.255.255.0
+Router(config-if)# no shutdown
+Router(config-if)# exit
+
+! Exclude static/reserved addresses
+Router(config)# ip dhcp excluded-address 192.168.18.1 192.168.18.10
+
+! Define DHCP pool
+Router(config)# ip dhcp pool POOL
+Router(dhcp-config)# network 192.168.18.0 255.255.255.0
+Router(dhcp-config)# default-router 192.168.18.1
+Router(dhcp-config)# dns-server 8.8.8.8
+Router(dhcp-config)# exit
+
+Router(config)# exit
+Router#
+
